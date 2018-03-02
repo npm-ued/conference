@@ -11,6 +11,16 @@ Current code uses *Truffle v2.0.4*
 
 ### Install
 
+Install [solc] 
+
+```
+$ npm install -g solc
+```
+```
+$ npm install -g solc-cli
+```
+
+
 Install [testrpc] (or use geth)
 
 ```
@@ -41,4 +51,15 @@ $ truffle test
 $ truffle serve // server at localhost:8080
 ```
 
+
+## 代码有问题
+
+
+```
+recipient.send(amount); 
+修改为
+if(!recipient.send(amount)) {
+	throw;
+}
+```
 

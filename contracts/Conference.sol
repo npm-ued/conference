@@ -33,7 +33,9 @@ contract Conference {  // can be killed, so the owner gets sent the money in the
 		if (registrantsPaid[recipient] == amount) { 
 			address myAddress = this;
 			if (myAddress.balance >= amount) { 
-				recipient.send(amount);
+				if(!recipient.send(amount)){
+					throw;
+				}
 				Refund(recipient, amount);
 				registrantsPaid[recipient] = 0;
 				numRegistrants--;
